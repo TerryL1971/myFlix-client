@@ -18,6 +18,8 @@
   "homepage": "https://github.com/TerryL1971/myFlix-client#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
