@@ -22921,7 +22921,7 @@ class MovieView extends _reactDefault.default.Component {
                 lineNumber: 23
             },
             __self: this
-        }, movie.Genre)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, movie.Genre.Name)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-director",
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/movie-view/movie-view.jsx",
@@ -22962,4 +22962,4 @@ class MovieView extends _reactDefault.default.Component {
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}]},["1j6wU","3yi51","7yMUr"], "7yMUr", "parcelRequire1e24")
 
-//# sourceMappingURL=index.43f97b6c.js.map
+//# sourceMappingURL=index.HASH_REF_e63cadc522519429841e34a743f97b6c.js.map

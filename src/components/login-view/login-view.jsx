@@ -4,12 +4,14 @@ export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
+  const onLoggedIn = props
+
   const handleSubmit = () => {
     e.preventDefault();
     console.log(username, password);
     /* Send a request to the server for authentication */
     /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
+    onLoggedIn(username);
   };
 
   return (
