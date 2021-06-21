@@ -21887,18 +21887,17 @@ class MainView extends _reactDefault.default.Component {
             console.log(event.key);
         });
     }
-    /*  componentDidMount(){
-    axios.get('https://myflix-app-2021.herokuapp.com/movies')
-      .then(response => {
-        this.setState({
-          movies: response.data
+    componentDidMount() {
+        _axiosDefault.default.get('https://myflix-app-2021.herokuapp.com/movies').then((response)=>{
+            this.setState({
+                movies: response.data
+            });
+        }).catch((error)=>{
+            console.log(error);
         });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    } */ getMovies(token) {
-        _axiosDefault.default.get('https://myflix-app-2021.herokuapp.com/movies', {
+    }
+    getMovies(token) {
+        _axiosDefault.default.get('https://myflix-app-2021.herokuapp.com//movies', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -26224,4 +26223,4 @@ module.exports = exports["default"];
 
 },{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}]},["1j6wU","3yi51","7yMUr"], "7yMUr", "parcelRequire1e24")
 
-//# sourceMappingURL=index.43f97b6c.js.map
+//# sourceMappingURL=index.HASH_REF_e63cadc522519429841e34a743f97b6c.js.map

@@ -21897,21 +21897,25 @@ class MainView extends _reactDefault.default.Component {
       .catch(error => {
         console.log(error);
       });
-    } */ getMovies(token) {
-        _axiosDefault.default.get('https://myflix-app-2021.herokuapp.com/movies', {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            // Assign the result to the state
-            this.setState({
-                movies: response.data
-            });
-        }).catch(function(error) {
-            console.log(error);
-        });
-    }
-    /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/ setSelectedMovie(movie) {
+    } 
+
+  getMovies(token) {
+    axios.get('https://myflix-app-2021.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+ 
+
+  /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/ setSelectedMovie(movie) {
         this.setState({
             selectedMovie: movie
         });
@@ -26224,4 +26228,4 @@ module.exports = exports["default"];
 
 },{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}]},["1j6wU","3yi51","7yMUr"], "7yMUr", "parcelRequire1e24")
 
-//# sourceMappingURL=index.43f97b6c.js.map
+//# sourceMappingURL=index.HASH_REF_e63cadc522519429841e34a743f97b6c.js.map
