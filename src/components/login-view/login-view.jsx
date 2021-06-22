@@ -3,7 +3,7 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-
+import Row from 'react-bootstrap/Row';
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -13,8 +13,8 @@ export function LoginView(props) {
 
 
   const handleSubmit = (e) => {
-  e.preventDefault();
-  /* Send a request to the server for authentication */
+    e.preventDefault();
+    /* Send a request to the server for authentication */
     axios.post('https://myflix-app-2021.herokuapp.com/login', {
       Username: username,
       Password: password
@@ -24,12 +24,13 @@ export function LoginView(props) {
       props.onLoggedIn(data);
     })
     .catch(e => {
-    console.log('no such user')
+      console.log('no such user')
     });
   };
 
   return (
-    <Col sm={3}>
+    <Row className="login-view justify-content-md-center">
+    <Col sm={3} margin="center">
     <Form>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
@@ -45,6 +46,7 @@ export function LoginView(props) {
       </Button>
     </Form>
     </Col>
+    </Row>
   );
 }
 

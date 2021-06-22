@@ -1,0 +1,49 @@
+var helpers = require("../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+const handleSubmit = (e)=>{
+    e.preventDefault();
+    /* Send a request to the server for authentication */ _axiosDefault.default.post('https://myflix-app-2021.herokuapp.com/users', {
+        Username: username,
+        Password: password
+    }).then((response)=>{
+        const data = response.data;
+        props.onLoggedIn(data);
+    }).catch((e1)=>{
+        console.log('no such user');
+    });
+};
+_axiosDefault.default.post('https://myflix-app-2021.herokuapp.com/users', {
+    Username: username,
+    Password: password,
+    Email: email,
+    Birthday: birthday
+}).then((response)=>{
+    const data = response.data;
+    console.log(data);
+    window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+}).catch((e)=>{
+    console.log('error registering the user');
+});
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
