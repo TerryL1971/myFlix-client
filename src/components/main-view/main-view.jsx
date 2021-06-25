@@ -3,11 +3,14 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { LoginView } from '../login-view/login-view';
+import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-//import { DirectorView } from '../director-view/director-view';
-//import { GenreView } from '../genre-view/genre-view';
-import { RegistrationView } from '../registration-view/registration-view';
+import { DirectorView } from '../director-view/director-view';
+import { GenreView } from '../genre-view/genre-view';
+
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -69,11 +72,10 @@ export class MainView extends React.Component {
     });
   }
 
-  render() {
-    const { movies, user } = this.state;
-    return (
-     // <button onClick={() => { this.onLoggedOut() }}>Logout</button>
-      <Router>
+  render() { 
+    const { user, movies } = this.state; 
+    return ( 
+      <Router> 
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
             if (!user) return <Col>
@@ -85,13 +87,16 @@ export class MainView extends React.Component {
                 <MovieCard movie={m} />
               </Col>
             ))
-          }} />
+          }} /> 
+          <button onClick={() => { this.onLoggedOut() }}>Logout</button>
+          
           <Route path="/register" render={() => {
             if (user) return <Redirect to="/" />
             return <Col>
-              <RegistrationView />
+              <RegistrationView /> 
+              <button onClick={() => { this.setState() }}>Register</button>
             </Col>
-          }} />
+          }} /> 
 
           <Route path="/movies/:movieId" render={({ match, history }) => {
             if (!user) return <Col>
@@ -101,9 +106,9 @@ export class MainView extends React.Component {
             return <Col md={8}>
               <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
             </Col>
-          }} />
+          }} /> 
 
-          <Route path="/directors/:name" render={({ match, history }) => {
+          <Route path="/directors.name/:name" render={({ match, history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
@@ -114,7 +119,7 @@ export class MainView extends React.Component {
           }
           } />
 
-          <Route path="/genres/:name" render={({ match, history }) => {
+          <Route path="/genres.name/:name" render={({ match, history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
@@ -122,12 +127,12 @@ export class MainView extends React.Component {
             return <Col md={8}>
               <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
             </Col>
-          }
-          } />
-        </Row>
-      </Router>
-    );
-  }
+            }
+          } /> 
+        </Row>  
+      </Router> 
+    ); 
+  } 
 }
 
 
