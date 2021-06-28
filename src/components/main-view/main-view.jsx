@@ -64,6 +64,13 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
+  onRegister(register) {
+    console.log(register);
+    this.setState({
+      register,
+    });
+  }
+
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -88,8 +95,9 @@ export class MainView extends React.Component {
               </Col>
             ))
           }} /> 
-          <button onClick={() => { this.onLoggedOut() }}>Logout</button>
-          
+
+         <button onClick={() => { this.onLoggedOut() }}>Logout</button> 
+
           <Route path="/register" render={() => {
             if (user) return <Redirect to="/" />
             return <Col>
