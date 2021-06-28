@@ -5,13 +5,14 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-export function RegistrationView(props) {
+
+export function RegistrationView() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
 
-  const { onLoggedIn } = props
+//  const { onLoggedIn } = props
 
   const handleRegister = (e) => {
     e.preventDefault();

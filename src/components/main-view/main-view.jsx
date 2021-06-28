@@ -64,12 +64,12 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  onRegister(register) {
+/*  onRegister(register) {
     console.log(register);
     this.setState({
       register,
     });
-  }
+  } */
 
   onLoggedOut() {
     localStorage.removeItem('token');
@@ -97,7 +97,7 @@ export class MainView extends React.Component {
           }} /> 
 
          <button onClick={() => { this.onLoggedOut() }}>Logout</button> 
-
+         
           <Route path="/register" render={() => {
             if (user) return <Redirect to="/" />
             return <Col>
