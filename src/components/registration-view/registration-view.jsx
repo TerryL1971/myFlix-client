@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Link } from "react-router-dom";
 
 
 export function RegistrationView() {
@@ -11,8 +12,6 @@ export function RegistrationView() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
-
-//  const { onLoggedIn } = props
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -30,7 +29,8 @@ export function RegistrationView() {
     .catch(e => {
       console.log('error registering the user')
     });
-  
+  }
+
     return (
     <Row className="registration-view justify-content-md-center">
     <Col sm={3} margin="center">
@@ -55,14 +55,16 @@ export function RegistrationView() {
         <Form.Control type="Birthday" onChange={e => setBirthday(e.target.value)} />
       </Form.Group>
 
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
+      <Button variant="primary" type="submit" onClick={handleRegister}>
+        Register
       </Button>
+      <Link to={`/`}>
+          <Button variant="link">Back</Button>
+        </Link>
     </Form>
     </Col>
     </Row>
    ); 
-  }
 }
 
 export default RegistrationView;

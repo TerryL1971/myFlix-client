@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 import './director-view.scss';
 
 export class DirectorView extends React.Component {
@@ -9,6 +10,9 @@ export class DirectorView extends React.Component {
 
     return (
       <div className="director-view">
+        <div>
+          <img src={director.ImagePath} width="250" height="350"/>
+        </div>
         <div className="director-name">
           <span className="label">Director: </span>
           <span className="value">{director.Name}</span>
@@ -26,3 +30,12 @@ export class DirectorView extends React.Component {
     );
   }
 }
+
+DirectorView.propTypes = {
+  director: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    Bio: PropTypes.string.isRequired,
+    Birth: PropTypes.string.isRequired
+  }),
+  onBackClick: PropTypes.func.isRequired
+};
