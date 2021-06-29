@@ -23,8 +23,8 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
     const [ validateEmail, setValidateEmail ] = useState('');
     const [ validateBirthday, setValidateBirthday ] = useState('');
     const [ feedback, setFeedback ] = useState(''); 
-
-    const { username, email, birthday, favoriteMovies  } = userProfile;
+ // console.log(userProfile)
+    const { Username, Email, Birthday, FavoriteMovies, user, _id  } = userProfile;
 
     // Username validation
     const validateUsername = (e) => {
@@ -90,12 +90,12 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
             return false;
         }
        
-        axios.put(`https://myflix-app-2021.herokuapp.com/users/${username}`,
+        axios.put(`https://myflix-app-2021.herokuapp.com/users/${Username}/${_id}`,
         { 
-            username: newUsername,
-            password: newPassword,
-            email: newEmail,
-            birthday: newBirthday
+            Username: newUsername,
+            Password: newPassword,
+            Email: newEmail,
+            Birthday: newBirthday
         },
         {
             headers: { Authorization: `Bearer ${userToken}`}
@@ -105,6 +105,7 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
             onUpdate(data)
             setFeedback('Your form has been submitted')
             clearForm()
+            
         }).catch(err => {
             console.log(err + 'Update fail')
             setFeedback('Submission failed')
@@ -113,7 +114,7 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
     
     // Delete Account
     const deleteUser = () => {
-        axios.delete(`https://myflix-app-2021.herokuapp.com/users/${username}`,
+        axios.delete(`https://myflix-app-2021.herokuapp.com/users/${Username}`,
         {
             headers: { Authorization: `Bearer ${userToken}` }
 
@@ -127,7 +128,7 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
 
     // Delete a film from favorites
     const deleteMovie = (movieID) => {
-        axios.delete(`https://myflix-app-1029.herokuapp.com/users/${username}/favorites/${movieID}`,
+        axios.delete(`https://myflix-app-1029.herokuapp.com/users/${Username}/favorites/${movieID}`,
         {
             headers: { Authorization: `Bearer ${userToken}` }
 
@@ -143,26 +144,25 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
 
     // Filters the movies based on the favorite_movies (array of only movie IDs)
     const filteredMovies = movies.filter(m => {
-        return favoriteMovies.indexOf(m._id) >= 0 ;
-    });
+        return FavoriteMovies.indexOf(m._id) >= 0 ;
+    }); 
     
-
     return (
-        <div className="profile-view">
-            <h4>{`Welcome ${username}`}</h4> <hr />
-
+        <div className="profile-view ">
+          <hr /> <hr />  <h4>{`Welcome ${Username}`}</h4> <hr />
+          
             <div className="user-profile">
                 <div className="user-info">
                     <div className="user-label">Username:</div>
-                    <div className="user">{username}</div>
+                    <div className="user">{Username}</div>
                 </div>
                 <div className="user-info">
                     <div className="user-label">Email:</div>
-                    <div className="user">{email}</div>
+                    <div className="user">{Email}</div>
                 </div>
                 <div className="user-info">
                     <div className="user-label">Birth:</div>
-                    <div className="user">{birth_date.slice(0, 10)}</div>
+                    <div className="user">{Birthday.slice(0, 10)}</div>
                 </div>
                 <div className="user-info">
                     <div className="user-label">Favorite Movies:</div>
@@ -175,7 +175,7 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
             <Form className="update-info">
                 <h4>Manage account</h4> <hr />
                 <Form.Group controlId="formBasicUsername">
-                    <Form.Label>New-username:</Form.Label>
+                    <Form.Label>New-Username:</Form.Label>
                     <Form.Control type="text" value={newUsername} onChange={(e) => {updateUsername(e.target.value),  validateUsername(e)}} />
                     <span className="validation-feedback">{validateUser}</span> 
                 </Form.Group>
@@ -194,8 +194,8 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
 
                 <Form.Group controlId="formBasicBirth">
                     <Form.Label>New-Birth(yyyy-mm-dd):</Form.Label>
-                    <Form.Control type="text"  value={newBirth} onChange={(e) => {updateBirth(e.target.value),  validateBirthdate(e)}} />
-                    <span className="validation-feedback">{validateDate}</span>
+                    <Form.Control type="text"  value={newBirthday} onChange={(e) => {updateBirthday(e.target.value),  validateBirthdate(e)}} />
+                    <span className="validation-feedback">{validateBirthday}</span>
                 </Form.Group>
 
                 <div className="feedback">{feedback}</div>

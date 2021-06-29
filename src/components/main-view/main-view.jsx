@@ -149,7 +149,7 @@ export class MainView extends React.Component {
 
           <Route path="/movies/:movieId" render={({ match, history }) => {
             if (!user) return <Col>
-              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+              <LoginView onLoggedIn={ (user) => this.onLoggedIn(user)} />
             </Col>
             if (movies.length === 0) return <div className="main-view" />;
             return <Col md={8}>
@@ -182,7 +182,7 @@ export class MainView extends React.Component {
             if (!user) return
             <LoginView onLogin={ (user) => this.onLoggedIn(user) } />
             return <Col>
-              <NavigationBar logOut={() => this.logoutUser()} user={user}  />
+              <NavigationBar logOut={() => this.onLoggedOut()} user={user}  />
               <ProfileView clickBack={() => {history.goBack()}} userProfile={user_profile} userToken={token} onDelete={() => 
               this.deleteUser()}  onUpdate={(data) => 
               this.updateUser(data)} movies={movies} onMovieDelete={(data) => 

@@ -15,15 +15,15 @@ export class GenreView extends React.Component {
       <Col>
         <div className="genre-view">
           <div>
-          <img src={genre.ImagePath} width="350" height="250"/>
+          <img src={genre.ImagePath} width="500" height="300"/>
         </div>
           <div className="genre-name">
-            <span className="label d-flex">Genre: </span>
-            <span className="value d-flex">{genre.Name}</span>
+            <span className="label">Genre: </span>
+            <span className="value">{genre.Name}</span>
           </div>
           <div className="genre-description">
-            <span className="label d-flex">Description: </span>
-            <span className="value d-flex">{genre.Description}</span>
+            <span className="label">Description: </span>
+            <span className="value">{genre.Description}</span>
           </div>
           <Button variant="secondary" size="sm" onClick={() => { onBackClick(null); }}>Back</Button>
         </div>

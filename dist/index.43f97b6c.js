@@ -22112,7 +22112,7 @@ class MainView extends _reactDefault.default.Component {
                     onLogin: (user1)=>this.onLoggedIn(user1)
                 });
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_navigationBar.NavigationBar, {
-                    logOut: ()=>this.logoutUser()
+                    logOut: ()=>this.onLoggedOut()
                     ,
                     user: user
                 }), /*#__PURE__*/ _reactDefault.default.createElement(_profileView.ProfileView, {
@@ -29192,8 +29192,8 @@ class DirectorView extends _reactDefault.default.Component {
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
             src: director.ImagePath,
-            width: "250",
-            height: "350",
+            width: "300",
+            height: "500",
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/director-view/director-view.jsx",
                 lineNumber: 14
@@ -29336,8 +29336,8 @@ class GenreView extends _reactDefault.default.Component {
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
             src: genre.ImagePath,
-            width: "350",
-            height: "250",
+            width: "500",
+            height: "300",
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/genre-view/genre-view.jsx",
                 lineNumber: 18
@@ -29351,14 +29351,14 @@ class GenreView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "label d-flex",
+            className: "label",
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/genre-view/genre-view.jsx",
                 lineNumber: 21
             },
             __self: this
         }, "Genre: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "value d-flex",
+            className: "value",
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/genre-view/genre-view.jsx",
                 lineNumber: 22
@@ -29372,14 +29372,14 @@ class GenreView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "label d-flex",
+            className: "label",
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/genre-view/genre-view.jsx",
                 lineNumber: 25
             },
             __self: this
         }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "value d-flex",
+            className: "value",
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/genre-view/genre-view.jsx",
                 lineNumber: 26
@@ -29467,7 +29467,8 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
     const [validateEmail, setValidateEmail] = _react.useState('');
     const [validateBirthday, setValidateBirthday] = _react.useState('');
     const [feedback, setFeedback] = _react.useState('');
-    const { username , email , birthday , favoriteMovies  } = userProfile;
+    // console.log(userProfile)
+    const { Username , Email , Birthday , FavoriteMovies , user , _id  } = userProfile;
     // Username validation
     const validateUsername = (e)=>{
         if (e.target.value.length > 0 && e.target.value.length < 5) setValidateUser('Username must be longer than 5 characters');
@@ -29509,11 +29510,11 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
             alert('Incorrect credentials');
             return false;
         }
-        _axiosDefault.default.put(`https://myflix-app-2021.herokuapp.com/users/${username}`, {
-            username: newUsername,
-            password: newPassword,
-            email: newEmail,
-            birthday: newBirthday
+        _axiosDefault.default.put(`https://myflix-app-2021.herokuapp.com/users/${Username}/${_id}`, {
+            Username: newUsername,
+            Password: newPassword,
+            Email: newEmail,
+            Birthday: newBirthday
         }, {
             headers: {
                 Authorization: `Bearer ${userToken}`
@@ -29530,7 +29531,7 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
     };
     // Delete Account
     const deleteUser = ()=>{
-        _axiosDefault.default.delete(`https://myflix-app-2021.herokuapp.com/users/${username}`, {
+        _axiosDefault.default.delete(`https://myflix-app-2021.herokuapp.com/users/${Username}`, {
             headers: {
                 Authorization: `Bearer ${userToken}`
             }
@@ -29543,7 +29544,7 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
     };
     // Delete a film from favorites
     const deleteMovie = (movieID)=>{
-        _axiosDefault.default.delete(`https://myflix-app-1029.herokuapp.com/users/${username}/favorites/${movieID}`, {
+        _axiosDefault.default.delete(`https://myflix-app-1029.herokuapp.com/users/${Username}/favorites/${movieID}`, {
             headers: {
                 Authorization: `Bearer ${userToken}`
             }
@@ -29556,22 +29557,34 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
     };
     // Filters the movies based on the favorite_movies (array of only movie IDs)
     const filteredMovies = movies.filter((m)=>{
-        return favoriteMovies.indexOf(m._id) >= 0;
+        return FavoriteMovies.indexOf(m._id) >= 0;
     });
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-        className: "profile-view",
+        className: "profile-view ",
         __source: {
             fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 151
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("h4", {
+    }, /*#__PURE__*/ _reactDefault.default.createElement("hr", {
         __source: {
             fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 152
         },
         __self: this
-    }, `Welcome ${username}`), " ", /*#__PURE__*/ _reactDefault.default.createElement("hr", {
+    }), " ", /*#__PURE__*/ _reactDefault.default.createElement("hr", {
+        __source: {
+            fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 152
+        },
+        __self: this
+    }), " ", /*#__PURE__*/ _reactDefault.default.createElement("h4", {
+        __source: {
+            fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 152
+        },
+        __self: this
+    }, `Welcome ${Username}`), " ", /*#__PURE__*/ _reactDefault.default.createElement("hr", {
         __source: {
             fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",
             lineNumber: 152
@@ -29605,7 +29618,7 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
             lineNumber: 157
         },
         __self: this
-    }, username)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, Username)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "user-info",
         __source: {
             fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",
@@ -29626,7 +29639,7 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
             lineNumber: 161
         },
         __self: this
-    }, email)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, Email)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "user-info",
         __source: {
             fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",
@@ -29647,7 +29660,7 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
             lineNumber: 165
         },
         __self: this
-    }, birth_date.slice(0, 10))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, Birthday.slice(0, 10))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "user-info",
         __source: {
             fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",
@@ -29725,7 +29738,7 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
             lineNumber: 178
         },
         __self: this
-    }, "New-username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+    }, "New-Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         type: "text",
         value: newUsername,
         onChange: (e)=>{
@@ -29820,9 +29833,9 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
         __self: this
     }, "New-Birth(yyyy-mm-dd):"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         type: "text",
-        value: newBirth,
+        value: newBirthday,
         onChange: (e)=>{
-            updateBirth(e.target.value), validateBirthdate(e);
+            updateBirthday(e.target.value), validateBirthdate(e);
         },
         __source: {
             fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",
@@ -29836,7 +29849,7 @@ function ProfileView({ userProfile , userToken , onDelete , onUpdate , movies , 
             lineNumber: 198
         },
         __self: this
-    }, validateDate)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, validateBirthday)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "feedback",
         __source: {
             fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/profile-view/profile-view.jsx",

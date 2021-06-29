@@ -11,7 +11,7 @@ export class DirectorView extends React.Component {
     return (
       <div className="director-view">
         <div>
-          <img src={director.ImagePath} width="250" height="350"/>
+          <img src={director.ImagePath} width="300" height="500"/>
         </div>
         <div className="director-name">
           <span className="label">Director: </span>
