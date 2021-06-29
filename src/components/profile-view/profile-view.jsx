@@ -90,7 +90,7 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
             return false;
         }
        
-        axios.put(`https://myflix-app-2021.herokuapp.com/users/${Username}/${_id}`,
+        axios.put(`https://myflix-app-2021.herokuapp.com/users/${Username}`,
         { 
             Username: newUsername,
             Password: newPassword,
@@ -209,7 +209,6 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
     )
 }
 
-/*
  ProfileView.propTypes = {
     movies: PropTypes.array.isRequired,
 
@@ -226,4 +225,4 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
     onDelete: PropTypes.func.isRequired,
     onUpdate: PropTypes.func.isRequired,
     onMovieDelete: PropTypes.func.isRequired,
-} */
+} 
