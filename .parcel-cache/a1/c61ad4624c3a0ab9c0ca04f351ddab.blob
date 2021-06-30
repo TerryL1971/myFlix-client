@@ -1,0 +1,13 @@
+/**
+ * A `removeEventListener` ponyfill
+ * 
+ * @param node the element
+ * @param eventName the event name
+ * @param handle the handler
+ * @param options event options
+ */ function $230a49e390ae771d398bbd728da816dc$var$removeEventListener(node, eventName, handler, options) {
+    var capture = options && typeof options !== 'boolean' ? options.capture : options;
+    node.removeEventListener(eventName, handler, capture);
+    if (handler.__once) node.removeEventListener(eventName, handler.__once, capture);
+}
+var $230a49e390ae771d398bbd728da816dc$export$9099ad97b570f7c = $230a49e390ae771d398bbd728da816dc$var$removeEventListener;

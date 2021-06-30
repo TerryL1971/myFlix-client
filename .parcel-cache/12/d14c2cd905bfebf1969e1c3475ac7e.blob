@@ -1,0 +1,5 @@
+import   "7105de1460857dcb718ebccb853d0e33:./hyphenate";
+var $7105de1460857dcb718ebccb853d0e33$var$msPattern = /^ms-/;
+function $7105de1460857dcb718ebccb853d0e33$export$9099ad97b570f7c(string) {
+    return $7105de1460857dcb718ebccb853d0e33$import$d2e99894da575e61$9099ad97b570f7c(string).replace($7105de1460857dcb718ebccb853d0e33$var$msPattern, '-ms-');
+}

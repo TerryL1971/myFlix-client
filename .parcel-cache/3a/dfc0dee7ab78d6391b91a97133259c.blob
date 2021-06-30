@@ -1,0 +1,17 @@
+import   "9c9425a3fd909eae14cd21bfe6db3914:dom-helpers/css";
+import   "9c9425a3fd909eae14cd21bfe6db3914:dom-helpers/transitionEnd";
+function $9c9425a3fd909eae14cd21bfe6db3914$var$parseDuration(node, property) {
+    var str = $9c9425a3fd909eae14cd21bfe6db3914$import$e81625030deb3938$9099ad97b570f7c(node, property) || '';
+    var mult = str.indexOf('ms') === -1 ? 1000 : 1;
+    return parseFloat(str) * mult;
+}
+function $9c9425a3fd909eae14cd21bfe6db3914$export$9099ad97b570f7c(element, handler) {
+    var duration = $9c9425a3fd909eae14cd21bfe6db3914$var$parseDuration(element, 'transitionDuration');
+    var delay = $9c9425a3fd909eae14cd21bfe6db3914$var$parseDuration(element, 'transitionDelay');
+    var remove = $9c9425a3fd909eae14cd21bfe6db3914$import$9e581e59ec245a99$9099ad97b570f7c(element, function(e) {
+        if (e.target === element) {
+            remove();
+            handler(e);
+        }
+    }, duration + delay);
+}

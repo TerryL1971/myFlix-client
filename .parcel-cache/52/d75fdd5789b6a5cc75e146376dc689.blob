@@ -1,0 +1,220 @@
+import   "b99182411b0c4385ef7cb9ad77bf0b83:react";
+import   "b99182411b0c4385ef7cb9ad77bf0b83:react-bootstrap/Button";
+import   "b99182411b0c4385ef7cb9ad77bf0b83:react-bootstrap/Form";
+import   "b99182411b0c4385ef7cb9ad77bf0b83:axios";
+import   "b99182411b0c4385ef7cb9ad77bf0b83:prop-types";
+import   "b99182411b0c4385ef7cb9ad77bf0b83:react-router-dom";
+import   "b99182411b0c4385ef7cb9ad77bf0b83:./profile-view.scss";
+function $b99182411b0c4385ef7cb9ad77bf0b83$export$19171ea33e9e98aa({ userProfile: userProfile , userToken: userToken , onDelete: onDelete , onUpdate: onUpdate , movies: movies , onMovieDelete: onMovieDelete  }) {
+    const [newUsername, updateUsername] = $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$f54936751fc2c51('');
+    const [newPassword, updatePassword] = $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$f54936751fc2c51('');
+    const [newEmail, updateEmail] = $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$f54936751fc2c51('');
+    const [newBirthday, updateBirthday] = $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$f54936751fc2c51('');
+    // States for validation
+    const [validateUser, setValidateUser] = $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$f54936751fc2c51('');
+    const [validatePassword, setValidatePassword] = $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$f54936751fc2c51('');
+    const [validateEmail, setValidateEmail] = $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$f54936751fc2c51('');
+    const [validateBirthday, setValidateBirthday] = $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$f54936751fc2c51('');
+    const [feedback, setFeedback] = $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$f54936751fc2c51('');
+    // console.log(userProfile)
+    const { Username: Username , Email: Email , Birthday: Birthday , FavoriteMovies: FavoriteMovies , user: user , _id: _id  } = userProfile;
+    // Username validation
+    const validateUsername = (e)=>{
+        if (e.target.value.length > 0 && e.target.value.length < 5) setValidateUser('Username must be longer than 5 characters');
+        else setValidateUser('');
+        if (!e.currentTarget.value.match(/^[0-9a-zA-Z]+$/) && e.target.value.length > 0) setValidateUser('Only alphanumeric characters allowed');
+    };
+    // Password validation
+    const validatePwd = (e)=>{
+        if (e.target.value.length > 0 && e.target.value.length < 8) setValidatePassword('Password must be longer than 8 characters');
+        else setValidatePassword('');
+    };
+    // Email validation
+    const validateMail = (e)=>{
+        if (!e.target.value.match(/\S+@\S+\.\S+/) && e.target.value.length > 0) setValidateEmail('Invalid email');
+        else setValidateEmail('');
+    };
+    // Birthday validation
+    const validateBirthdate = (e)=>{
+        if (!e.target.value.match(/^\d{4}-\d{2}-\d{2}$/) && e.target.value.length > 0) setValidateBirthday('Plese use only this format (yyyy-mm-dd)');
+        else setValidateBirthday('');
+    };
+    // Clear inputs after submission
+    const clearForm = ()=>{
+        updateUsername('');
+        updateEmail('');
+        updatePassword('');
+        updateBirthday('');
+    };
+    // Update users info
+    const updateUser = (e)=>{
+        e.preventDefault();
+        // validation for empty inputs
+        if (newUsername.length === 0 || newPassword.length === 0 || newEmail.length === 0 || newBirthday.length === 0) {
+            alert('Please fill in all the fields');
+            return false;
+        }
+        // prevent submission of incorrect credentials
+        if (validateUser || validateEmail || validatePassword || validateBirthday) {
+            alert('Incorrect credentials');
+            return false;
+        }
+        $b99182411b0c4385ef7cb9ad77bf0b83$import$bed27987f94bc6dd$9099ad97b570f7c.put(`https://myflix-app-2021.herokuapp.com/users/${Username}`, {
+            Username: newUsername,
+            Password: newPassword,
+            Email: newEmail,
+            Birthday: newBirthday
+        }, {
+            headers: {
+                Authorization: `Bearer ${userToken}`
+            }
+        }).then((response)=>{
+            const data = response.data;
+            onUpdate(data);
+            setFeedback('Your form has been submitted');
+            clearForm();
+        }).catch((err)=>{
+            console.log(err + 'Update fail');
+            setFeedback('Submission failed');
+        });
+    };
+    // Delete Account
+    const deleteUser = ()=>{
+        $b99182411b0c4385ef7cb9ad77bf0b83$import$bed27987f94bc6dd$9099ad97b570f7c.delete(`https://myflix-app-2021.herokuapp.com/users/${Username}`, {
+            headers: {
+                Authorization: `Bearer ${userToken}`
+            }
+        }).then((response)=>{
+            console.log(response.data);
+            onDelete();
+        }).catch((err)=>{
+            console.log(err);
+        });
+    };
+    // Delete a film from favorites
+    const deleteMovie = (movieID)=>{
+        $b99182411b0c4385ef7cb9ad77bf0b83$import$bed27987f94bc6dd$9099ad97b570f7c.delete(`https://myflix-app-1029.herokuapp.com/users/${Username}/favorites/${movieID}`, {
+            headers: {
+                Authorization: `Bearer ${userToken}`
+            }
+        }).then((response)=>{
+            const data = response.data;
+            onMovieDelete(data);
+        }).catch((err)=>{
+            console.log(err);
+        });
+    };
+    // Filters the movies based on the favorite_movies (array of only movie IDs)
+    const filteredMovies = movies.filter((m)=>{
+        return FavoriteMovies.indexOf(m._id) >= 0;
+    });
+    return(/*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "profile-view "
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("hr", null), " ", /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("hr", null), " ", /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("h4", null, `Welcome ${Username}`), " ", /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("hr", null), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user-profile"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user-info"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user-label"
+    }, "Username:"), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user"
+    }, Username)), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user-info"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user-label"
+    }, "Email:"), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user"
+    }, Email)), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user-info"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user-label"
+    }, "Birth:"), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user"
+    }, Birthday.slice(0, 10))), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user-info"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "user-label"
+    }, "Favorite Movies:"), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("ul", {
+        className: "user"
+    }, filteredMovies.map((m, index)=>/*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("li", {
+            key: index,
+            className: "fav-list"
+        }, " ", /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$46a3a2459f86404b$454c04d8f1b76440, {
+            to: `/movies/${m._id}`
+        }, m.title), " ", /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("button", {
+            className: "close",
+            onClick: ()=>deleteMovie(m._id)
+        }, "\xd7"), " ")
+    )))), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c, {
+        className: "update-info"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("h4", null, "Manage account"), " ", /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("hr", null), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Group, {
+        controlId: "formBasicUsername"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Label, null, "New-Username:"), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Control, {
+        type: "text",
+        value: newUsername,
+        onChange: (e)=>{
+            updateUsername(e.target.value), validateUsername(e);
+        }
+    }), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+        className: "validation-feedback"
+    }, validateUser)), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Group, {
+        controlId: "formBasicPassword"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Label, null, "New-password:"), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Control, {
+        type: "password",
+        value: newPassword,
+        onChange: (e)=>{
+            updatePassword(e.target.value), validatePwd(e);
+        }
+    }), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+        className: "validation-feedback"
+    }, validatePassword)), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Group, {
+        controlId: "formBasicEmail"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Label, null, "New-email:"), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Control, {
+        type: "email",
+        value: newEmail,
+        onChange: (e)=>{
+            updateEmail(e.target.value), validateMail(e);
+        }
+    }), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+        className: "validation-feedback"
+    }, validateEmail)), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Group, {
+        controlId: "formBasicBirth"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Label, null, "New-Birth(yyyy-mm-dd):"), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$c33866132872a26f$9099ad97b570f7c.Control, {
+        type: "text",
+        value: newBirthday,
+        onChange: (e)=>{
+            updateBirthday(e.target.value), validateBirthdate(e);
+        }
+    }), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+        className: "validation-feedback"
+    }, validateBirthday)), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "feedback"
+    }, feedback), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+        className: "button-wrapper"
+    }, /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$4f4877c85d888a51$9099ad97b570f7c, {
+        variant: "primary",
+        size: "sm",
+        type: "submit",
+        onClick: updateUser
+    }, "Update details"), /*#__PURE__*/ $b99182411b0c4385ef7cb9ad77bf0b83$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($b99182411b0c4385ef7cb9ad77bf0b83$import$4f4877c85d888a51$9099ad97b570f7c, {
+        variant: "danger",
+        size: "sm",
+        type: "button",
+        onClick: deleteUser
+    }, "Delete account")))));
+}
+$b99182411b0c4385ef7cb9ad77bf0b83$export$19171ea33e9e98aa.propTypes = {
+    movies: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.array.isRequired,
+    userProfile: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.shape({
+        username: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.string.isRequired,
+        email: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.string.isRequired,
+        favorite_movies: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.array.isRequired,
+        birth_date: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.string.isRequired,
+        pwd: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.string,
+        _id: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.string
+    }).isRequired,
+    userToken: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.string.isRequired,
+    onDelete: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.func.isRequired,
+    onUpdate: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.func.isRequired,
+    onMovieDelete: $b99182411b0c4385ef7cb9ad77bf0b83$import$67a8cc6ac06859d5$9099ad97b570f7c.func.isRequired
+};

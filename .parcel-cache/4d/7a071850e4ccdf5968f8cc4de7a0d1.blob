@@ -1,0 +1,37 @@
+import   "ddd3c0071a4638758646141a3ca4bece:@babel/runtime/helpers/esm/extends";
+import   "ddd3c0071a4638758646141a3ca4bece:@babel/runtime/helpers/esm/objectWithoutPropertiesLoose";
+import   "ddd3c0071a4638758646141a3ca4bece:classnames";
+import   "ddd3c0071a4638758646141a3ca4bece:react";
+import   "ddd3c0071a4638758646141a3ca4bece:./SafeAnchor";
+import   "ddd3c0071a4638758646141a3ca4bece:./AbstractNavItem";
+import   "ddd3c0071a4638758646141a3ca4bece:./ThemeProvider";
+var $ddd3c0071a4638758646141a3ca4bece$var$_excluded = [
+    "bsPrefix",
+    "disabled",
+    "className",
+    "href",
+    "eventKey",
+    "onSelect",
+    "as"
+];
+var $ddd3c0071a4638758646141a3ca4bece$var$defaultProps = {
+    disabled: false,
+    as: $ddd3c0071a4638758646141a3ca4bece$import$552717ec2dace354$9099ad97b570f7c
+};
+var $ddd3c0071a4638758646141a3ca4bece$var$NavLink = /*#__PURE__*/ $ddd3c0071a4638758646141a3ca4bece$import$f02ba03fc070e88c$9099ad97b570f7c.forwardRef(function(_ref, ref) {
+    var bsPrefix = _ref.bsPrefix, disabled = _ref.disabled, className = _ref.className, href = _ref.href, eventKey = _ref.eventKey, onSelect = _ref.onSelect, as = _ref.as, props = $ddd3c0071a4638758646141a3ca4bece$import$555fcbd5081a286a$9099ad97b570f7c(_ref, $ddd3c0071a4638758646141a3ca4bece$var$_excluded);
+    bsPrefix = $ddd3c0071a4638758646141a3ca4bece$import$1581226de02c9527$6efad33e744e1774(bsPrefix, 'nav-link');
+    return(/*#__PURE__*/ $ddd3c0071a4638758646141a3ca4bece$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($ddd3c0071a4638758646141a3ca4bece$import$741ed730f05718fb$9099ad97b570f7c, $ddd3c0071a4638758646141a3ca4bece$import$b5eba6ed2ba96e9b$9099ad97b570f7c({
+    }, props, {
+        href: href,
+        ref: ref,
+        eventKey: eventKey,
+        as: as,
+        disabled: disabled,
+        onSelect: onSelect,
+        className: $ddd3c0071a4638758646141a3ca4bece$import$c7a3314ec092e1bf$9099ad97b570f7c(className, bsPrefix, disabled && 'disabled')
+    })));
+});
+$ddd3c0071a4638758646141a3ca4bece$var$NavLink.displayName = 'NavLink';
+$ddd3c0071a4638758646141a3ca4bece$var$NavLink.defaultProps = $ddd3c0071a4638758646141a3ca4bece$var$defaultProps;
+var $ddd3c0071a4638758646141a3ca4bece$export$9099ad97b570f7c = $ddd3c0071a4638758646141a3ca4bece$var$NavLink;

@@ -1,0 +1,19 @@
+import   "0f635e76741792c1880e2e95a8143fdf:react";
+/**
+ * Creates a `Ref` whose value is updated in an effect, ensuring the most recent
+ * value is the one rendered with. Generally only required for Concurrent mode usage
+ * where previous work in `render()` may be discarded befor being used.
+ *
+ * This is safe to access in an event handler.
+ *
+ * @param value The `Ref` value
+ */ function $0f635e76741792c1880e2e95a8143fdf$var$useCommittedRef(value) {
+    var ref = $0f635e76741792c1880e2e95a8143fdf$import$f02ba03fc070e88c$575893c07881cfe8(value);
+    $0f635e76741792c1880e2e95a8143fdf$import$f02ba03fc070e88c$7e977b4ca969aabd(function() {
+        ref.current = value;
+    }, [
+        value
+    ]);
+    return ref;
+}
+var $0f635e76741792c1880e2e95a8143fdf$export$9099ad97b570f7c = $0f635e76741792c1880e2e95a8143fdf$var$useCommittedRef;

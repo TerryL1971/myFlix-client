@@ -1,0 +1,15 @@
+import   "288e08f7f997a1eeb84f1b769e5d5d76:react";
+import   "288e08f7f997a1eeb84f1b769e5d5d76:react-redux";
+import   "288e08f7f997a1eeb84f1b769e5d5d76:react-bootstrap/Form";
+import   "288e08f7f997a1eeb84f1b769e5d5d76:../../actions/actions";
+function $288e08f7f997a1eeb84f1b769e5d5d76$var$VisibilityFilterInput(props) {
+    return(/*#__PURE__*/ $288e08f7f997a1eeb84f1b769e5d5d76$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($288e08f7f997a1eeb84f1b769e5d5d76$import$c33866132872a26f$9099ad97b570f7c.Control, {
+        onChange: (e)=>props.setFilter(e.target.value)
+        ,
+        value: props.visibilityFilter,
+        placeholder: "filter"
+    }));
+}
+var $288e08f7f997a1eeb84f1b769e5d5d76$export$9099ad97b570f7c = $288e08f7f997a1eeb84f1b769e5d5d76$import$336b048844a0f5a7$b4e85276e81c9e28(null, {
+    setFilter: $288e08f7f997a1eeb84f1b769e5d5d76$import$d0c24893051b0b44$4bfe476be65d76a7
+})($288e08f7f997a1eeb84f1b769e5d5d76$var$VisibilityFilterInput);

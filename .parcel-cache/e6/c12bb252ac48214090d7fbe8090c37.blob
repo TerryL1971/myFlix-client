@@ -1,0 +1,24 @@
+import   "e79709822bffe4dcf6040c33af9d646e:@babel/runtime/helpers/esm/extends";
+import   "e79709822bffe4dcf6040c33af9d646e:@babel/runtime/helpers/esm/objectWithoutPropertiesLoose";
+import   "e79709822bffe4dcf6040c33af9d646e:react";
+import   "e79709822bffe4dcf6040c33af9d646e:./Collapse";
+import   "e79709822bffe4dcf6040c33af9d646e:./ThemeProvider";
+import   "e79709822bffe4dcf6040c33af9d646e:./NavbarContext";
+var $e79709822bffe4dcf6040c33af9d646e$var$_excluded = [
+    "children",
+    "bsPrefix"
+];
+var $e79709822bffe4dcf6040c33af9d646e$var$NavbarCollapse = /*#__PURE__*/ $e79709822bffe4dcf6040c33af9d646e$import$f02ba03fc070e88c$9099ad97b570f7c.forwardRef(function(_ref, ref) {
+    var children = _ref.children, bsPrefix = _ref.bsPrefix, props = $e79709822bffe4dcf6040c33af9d646e$import$555fcbd5081a286a$9099ad97b570f7c(_ref, $e79709822bffe4dcf6040c33af9d646e$var$_excluded);
+    bsPrefix = $e79709822bffe4dcf6040c33af9d646e$import$1581226de02c9527$6efad33e744e1774(bsPrefix, 'navbar-collapse');
+    return(/*#__PURE__*/ $e79709822bffe4dcf6040c33af9d646e$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($e79709822bffe4dcf6040c33af9d646e$import$523ef7575a161360$9099ad97b570f7c.Consumer, null, function(context) {
+        return(/*#__PURE__*/ $e79709822bffe4dcf6040c33af9d646e$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($e79709822bffe4dcf6040c33af9d646e$import$9b413a793a7e9a0b$9099ad97b570f7c, $e79709822bffe4dcf6040c33af9d646e$import$b5eba6ed2ba96e9b$9099ad97b570f7c({
+            in: !!(context && context.expanded)
+        }, props), /*#__PURE__*/ $e79709822bffe4dcf6040c33af9d646e$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+            ref: ref,
+            className: bsPrefix
+        }, children)));
+    }));
+});
+$e79709822bffe4dcf6040c33af9d646e$var$NavbarCollapse.displayName = 'NavbarCollapse';
+var $e79709822bffe4dcf6040c33af9d646e$export$9099ad97b570f7c = $e79709822bffe4dcf6040c33af9d646e$var$NavbarCollapse;
