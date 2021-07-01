@@ -1,9 +1,0 @@
-import   "b5e8b3b3909f0c94e21bce2a7e13cb1b:react";
-function $b5e8b3b3909f0c94e21bce2a7e13cb1b$export$9099ad97b570f7c() {
-    // The toggling state value is designed to defeat React optimizations for skipping
-    // updates when they are stricting equal to the last state value
-    var _useReducer = $b5e8b3b3909f0c94e21bce2a7e13cb1b$import$f02ba03fc070e88c$6e55c98e7205a356(function(state) {
-        return !state;
-    }, false), dispatch = _useReducer[1];
-    return dispatch;
-}

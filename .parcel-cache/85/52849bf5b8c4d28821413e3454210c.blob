@@ -1,4 +1,0 @@
-import   "d9724251217e2ec7a12a1fcb1446c513:./ownerWindow";
-function $d9724251217e2ec7a12a1fcb1446c513$export$9099ad97b570f7c(node, psuedoElement) {
-    return $d9724251217e2ec7a12a1fcb1446c513$import$2bdffe4dc29240$9099ad97b570f7c(node).getComputedStyle(node, psuedoElement);
-}

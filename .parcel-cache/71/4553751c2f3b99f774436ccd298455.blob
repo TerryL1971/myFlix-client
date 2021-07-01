@@ -1,3 +1,0 @@
-function $37458a8ca819921d709998c2e01cc560$export$9099ad97b570f7c(node) {
-    return node && node.ownerDocument || document;
-}

@@ -1,9 +1,0 @@
-import   "4d0b40b90e698d2565a7bf0d88c99904:./addEventListener";
-import   "4d0b40b90e698d2565a7bf0d88c99904:./removeEventListener";
-function $4d0b40b90e698d2565a7bf0d88c99904$var$listen(node, eventName, handler, options) {
-    $4d0b40b90e698d2565a7bf0d88c99904$import$47aad7577b4444d9$9099ad97b570f7c(node, eventName, handler, options);
-    return function() {
-        $4d0b40b90e698d2565a7bf0d88c99904$import$fc3d45da4deb69a4$9099ad97b570f7c(node, eventName, handler, options);
-    };
-}
-var $4d0b40b90e698d2565a7bf0d88c99904$export$9099ad97b570f7c = $4d0b40b90e698d2565a7bf0d88c99904$var$listen;

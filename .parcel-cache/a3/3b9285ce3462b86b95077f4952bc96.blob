@@ -1,3 +1,0 @@
-import   "36b64100d9f6fdba292be163d692f018:react";
-var $36b64100d9f6fdba292be163d692f018$var$TabContext = /*#__PURE__*/ $36b64100d9f6fdba292be163d692f018$import$f02ba03fc070e88c$9099ad97b570f7c.createContext(null);
-var $36b64100d9f6fdba292be163d692f018$export$9099ad97b570f7c = $36b64100d9f6fdba292be163d692f018$var$TabContext;

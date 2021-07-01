@@ -1,4 +1,0 @@
-const $08e9a97243e6c7f5dbdd03b8abbc21af$var$Config = {
-    API_URL: 'https://myflix-app-2021.herokuapp.com/'
-};
-var $08e9a97243e6c7f5dbdd03b8abbc21af$export$9099ad97b570f7c = $08e9a97243e6c7f5dbdd03b8abbc21af$var$Config;

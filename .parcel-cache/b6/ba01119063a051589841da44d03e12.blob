@@ -1,4 +1,0 @@
-var $04db37b7bf0d26e6580b2d546e648bc8$var$supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i;
-function $04db37b7bf0d26e6580b2d546e648bc8$export$9099ad97b570f7c(value) {
-    return !!(value && $04db37b7bf0d26e6580b2d546e648bc8$var$supportedTransforms.test(value));
-}

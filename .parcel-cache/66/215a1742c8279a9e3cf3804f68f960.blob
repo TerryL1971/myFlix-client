@@ -1,5 +1,0 @@
-import   "00ceeaa4c629008d75431525e17725d8:./ownerDocument";
-function $00ceeaa4c629008d75431525e17725d8$export$9099ad97b570f7c(node) {
-    var doc = $00ceeaa4c629008d75431525e17725d8$import$7edd190028726643$9099ad97b570f7c(node);
-    return doc && doc.defaultView || window;
-}

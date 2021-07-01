@@ -1,4 +1,0 @@
-import   "5224e9f1bdde357b9922d9021f0e3057:react";
-var $5224e9f1bdde357b9922d9021f0e3057$var$context = /*#__PURE__*/ $5224e9f1bdde357b9922d9021f0e3057$import$f02ba03fc070e88c$9099ad97b570f7c.createContext(null);
-$5224e9f1bdde357b9922d9021f0e3057$var$context.displayName = 'NavbarContext';
-var $5224e9f1bdde357b9922d9021f0e3057$export$9099ad97b570f7c = $5224e9f1bdde357b9922d9021f0e3057$var$context;
