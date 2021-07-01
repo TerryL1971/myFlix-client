@@ -1,0 +1,91 @@
+import   "ddaca5c2a308c4002bd78981dd8cf4b1:react";
+import   "ddaca5c2a308c4002bd78981dd8cf4b1:prop-types";
+import   "ddaca5c2a308c4002bd78981dd8cf4b1:react-bootstrap/Button";
+import   "ddaca5c2a308c4002bd78981dd8cf4b1:axios";
+import   "ddaca5c2a308c4002bd78981dd8cf4b1:../../config.js";
+import   "ddaca5c2a308c4002bd78981dd8cf4b1:react-router-dom";
+class $ddaca5c2a308c4002bd78981dd8cf4b1$export$7a4253a85ccac5dc extends $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.Component {
+    keypressCallback(event) {
+        console.log(event.key);
+    }
+    addFavorite(movie) {
+        let token = localStorage.getItem('token');
+        let Username = localStorage.getItem('Username');
+        $ddaca5c2a308c4002bd78981dd8cf4b1$import$bed27987f94bc6dd$9099ad97b570f7c.post(`https://myflix-app-2021.herokuapp.com/users/${Username}/movies/${movie._id}`, null, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            console.log(response);
+            alert('This movie has been added to your favorites list!');
+        }).catch(function(error) {
+            console.log(error);
+            alert('There was an error.');
+        });
+    }
+    componentDidMount() {
+        document.addEventListener('keypress', (event)=>{
+            console.log(event.key);
+        });
+    }
+    render() {
+        const { movie: movie , onBackClick: onBackClick  } = this.props;
+        return(/*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+            className: "movie-view"
+        }, /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+            className: "movie-poster"
+        }, /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("img", {
+            src: movie.ImagePath
+        })), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+            className: "movie-title"
+        }, /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+            className: "label"
+        }, "Title: "), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+            className: "value"
+        }, movie.Title)), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+            className: "movie-description"
+        }, /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+            className: "label"
+        }, "Description: "), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+            className: "value"
+        }, movie.Description)), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+            className: "movie-genre"
+        }, /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+            className: "label"
+        }, "Genre: "), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+            className: "value"
+        }, movie.Genre.Name)), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+            className: "movie-director"
+        }, /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+            className: "label"
+        }, "Director: "), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("span", {
+            className: "value"
+        }, movie.Director.Name)), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("button", {
+            onClick: ()=>{
+                onBackClick(null);
+            }
+        }, "Back"), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($ddaca5c2a308c4002bd78981dd8cf4b1$import$46a3a2459f86404b$454c04d8f1b76440, {
+            to: `/directors/${movie.Director.Name}`
+        }, /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($ddaca5c2a308c4002bd78981dd8cf4b1$import$4f4877c85d888a51$9099ad97b570f7c, {
+            variant: "link"
+        }, "Director")), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($ddaca5c2a308c4002bd78981dd8cf4b1$import$46a3a2459f86404b$454c04d8f1b76440, {
+            to: `/genres/${movie.Genre.Name}`
+        }, /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($ddaca5c2a308c4002bd78981dd8cf4b1$import$4f4877c85d888a51$9099ad97b570f7c, {
+            variant: "link"
+        }, "Genre")), /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement("div", {
+            className: ""
+        }, /*#__PURE__*/ $ddaca5c2a308c4002bd78981dd8cf4b1$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($ddaca5c2a308c4002bd78981dd8cf4b1$import$4f4877c85d888a51$9099ad97b570f7c, {
+            className: "btn btn-primary mb-2",
+            variant: "",
+            onClick: ()=>this.addFavorite(movie)
+        }, "Add to Favorites"))));
+    }
+} // MovieView.propTypes = {
+ //   movie: PropTypes.shape({
+ //     title: PropTypes.string.isRequired,
+ //     description: PropTypes.string.isRequired,
+ //     genre: PropTypes.string.isRequired,
+ //     director: PropTypes.string.isRequired,
+ //     imagePath: PropTypes.string.isRequired,
+ //   }).isRequired
+ // };

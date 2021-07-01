@@ -1,8 +1,12 @@
-import React , {useEffect, useState} from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import axios from 'axios';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
+import { Card, FormControl } from 'react-bootstrap';
+import axios from "axios";
+import Container from "react-bootstrap/Container";
+import { Button, Form, Col, Row } from "react-bootstrap";
+import Config from '../../config.js';
+
 
 // Router
 import { Link } from "react-router-dom";
@@ -23,7 +27,6 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
     const [ validateEmail, setValidateEmail ] = useState('');
     const [ validateBirthday, setValidateBirthday ] = useState('');
     const [ feedback, setFeedback ] = useState(''); 
- // console.log(userProfile)
     const { Username, Email, Birthday, FavoriteMovies, user, _id  } = userProfile;
 
     // Username validation

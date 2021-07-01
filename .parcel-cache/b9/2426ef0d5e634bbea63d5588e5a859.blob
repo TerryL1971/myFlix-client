@@ -1,0 +1,4 @@
+var $7adbc1810a0dad4f8be276281ddfe70d$var$rUpper = /([A-Z])/g;
+function $7adbc1810a0dad4f8be276281ddfe70d$export$9099ad97b570f7c(string) {
+    return string.replace($7adbc1810a0dad4f8be276281ddfe70d$var$rUpper, '-$1').toLowerCase();
+}

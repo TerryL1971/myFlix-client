@@ -1,0 +1,38 @@
+import   "eaeac79038e3be46937ae5b3f2f910a4:react";
+var $eaeac79038e3be46937ae5b3f2f910a4$var$toFnRef = function toFnRef(ref) {
+    return !ref || typeof ref === 'function' ? ref : function(value) {
+        ref.current = value;
+    };
+};
+function $eaeac79038e3be46937ae5b3f2f910a4$export$1efa1b80ddf9a6bf(refA, refB) {
+    var a = $eaeac79038e3be46937ae5b3f2f910a4$var$toFnRef(refA);
+    var b = $eaeac79038e3be46937ae5b3f2f910a4$var$toFnRef(refB);
+    return function(value) {
+        if (a) a(value);
+        if (b) b(value);
+    };
+}
+/**
+ * Create and returns a single callback ref composed from two other Refs.
+ *
+ * ```tsx
+ * const Button = React.forwardRef((props, ref) => {
+ *   const [element, attachRef] = useCallbackRef<HTMLButtonElement>();
+ *   const mergedRef = useMergedRefs(ref, attachRef);
+ *
+ *   return <button ref={mergedRef} {...props}/>
+ * })
+ * ```
+ *
+ * @param refA A Callback or mutable Ref
+ * @param refB A Callback or mutable Ref
+ * @category refs
+ */ function $eaeac79038e3be46937ae5b3f2f910a4$var$useMergedRefs(refA, refB) {
+    return $eaeac79038e3be46937ae5b3f2f910a4$import$f02ba03fc070e88c$fe55aea32a6cbc49(function() {
+        return $eaeac79038e3be46937ae5b3f2f910a4$export$1efa1b80ddf9a6bf(refA, refB);
+    }, [
+        refA,
+        refB
+    ]);
+}
+var $eaeac79038e3be46937ae5b3f2f910a4$export$9099ad97b570f7c = $eaeac79038e3be46937ae5b3f2f910a4$var$useMergedRefs;

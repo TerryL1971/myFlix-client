@@ -1,0 +1,100 @@
+import   "842b11e09be1b78a7386fd3c27d77a08:@babel/runtime/helpers/esm/extends";
+import   "842b11e09be1b78a7386fd3c27d77a08:@babel/runtime/helpers/esm/objectWithoutPropertiesLoose";
+import   "842b11e09be1b78a7386fd3c27d77a08:dom-helpers/querySelectorAll";
+import   "842b11e09be1b78a7386fd3c27d77a08:react";
+import   "842b11e09be1b78a7386fd3c27d77a08:@restart/hooks/useForceUpdate";
+import   "842b11e09be1b78a7386fd3c27d77a08:@restart/hooks/useMergedRefs";
+import   "842b11e09be1b78a7386fd3c27d77a08:./NavContext";
+import   "842b11e09be1b78a7386fd3c27d77a08:./SelectableContext";
+import   "842b11e09be1b78a7386fd3c27d77a08:./TabContext";
+var $842b11e09be1b78a7386fd3c27d77a08$var$_excluded = [
+    "as",
+    "onSelect",
+    "activeKey",
+    "role",
+    "onKeyDown"
+];
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+var $842b11e09be1b78a7386fd3c27d77a08$var$noop = function noop() {
+};
+var $842b11e09be1b78a7386fd3c27d77a08$var$AbstractNav = /*#__PURE__*/ $842b11e09be1b78a7386fd3c27d77a08$import$f02ba03fc070e88c$9099ad97b570f7c.forwardRef(function(_ref, ref) {
+    var _ref$as = _ref.as, Component = _ref$as === void 0 ? 'ul' : _ref$as, onSelect = _ref.onSelect, activeKey = _ref.activeKey, role = _ref.role, onKeyDown = _ref.onKeyDown, props = $842b11e09be1b78a7386fd3c27d77a08$import$555fcbd5081a286a$9099ad97b570f7c(_ref, $842b11e09be1b78a7386fd3c27d77a08$var$_excluded);
+    // A ref and forceUpdate for refocus, b/c we only want to trigger when needed
+    // and don't want to reset the set in the effect
+    var forceUpdate = $842b11e09be1b78a7386fd3c27d77a08$import$dfc0da16574ff155$9099ad97b570f7c();
+    var needsRefocusRef = $842b11e09be1b78a7386fd3c27d77a08$import$f02ba03fc070e88c$575893c07881cfe8(false);
+    var parentOnSelect = $842b11e09be1b78a7386fd3c27d77a08$import$f02ba03fc070e88c$d532f802c57568ca($842b11e09be1b78a7386fd3c27d77a08$import$4659efbd9c13b15a$9099ad97b570f7c);
+    var tabContext = $842b11e09be1b78a7386fd3c27d77a08$import$f02ba03fc070e88c$d532f802c57568ca($842b11e09be1b78a7386fd3c27d77a08$import$9166ae823e416357$9099ad97b570f7c);
+    var getControlledId, getControllerId;
+    if (tabContext) {
+        role = role || 'tablist';
+        activeKey = tabContext.activeKey;
+        getControlledId = tabContext.getControlledId;
+        getControllerId = tabContext.getControllerId;
+    }
+    var listNode = $842b11e09be1b78a7386fd3c27d77a08$import$f02ba03fc070e88c$575893c07881cfe8(null);
+    var getNextActiveChild = function getNextActiveChild1(offset) {
+        var currentListNode = listNode.current;
+        if (!currentListNode) return null;
+        var items = $842b11e09be1b78a7386fd3c27d77a08$import$597b0317d591d996$9099ad97b570f7c(currentListNode, '[data-rb-event-key]:not(.disabled)');
+        var activeChild = currentListNode.querySelector('.active');
+        if (!activeChild) return null;
+        var index = items.indexOf(activeChild);
+        if (index === -1) return null;
+        var nextIndex = index + offset;
+        if (nextIndex >= items.length) nextIndex = 0;
+        if (nextIndex < 0) nextIndex = items.length - 1;
+        return items[nextIndex];
+    };
+    var handleSelect = function handleSelect1(key, event) {
+        if (key == null) return;
+        if (onSelect) onSelect(key, event);
+        if (parentOnSelect) parentOnSelect(key, event);
+    };
+    var handleKeyDown = function handleKeyDown1(event) {
+        if (onKeyDown) onKeyDown(event);
+        var nextActiveChild;
+        switch(event.key){
+            case 'ArrowLeft':
+            case 'ArrowUp':
+                nextActiveChild = getNextActiveChild(-1);
+                break;
+            case 'ArrowRight':
+            case 'ArrowDown':
+                nextActiveChild = getNextActiveChild(1);
+                break;
+            default:
+                return;
+        }
+        if (!nextActiveChild) return;
+        event.preventDefault();
+        handleSelect(nextActiveChild.dataset.rbEventKey, event);
+        needsRefocusRef.current = true;
+        forceUpdate();
+    };
+    $842b11e09be1b78a7386fd3c27d77a08$import$f02ba03fc070e88c$7e977b4ca969aabd(function() {
+        if (listNode.current && needsRefocusRef.current) {
+            var activeChild = listNode.current.querySelector('[data-rb-event-key].active');
+            if (activeChild) activeChild.focus();
+        }
+        needsRefocusRef.current = false;
+    });
+    var mergedRef = $842b11e09be1b78a7386fd3c27d77a08$import$cd366268bac8b26$9099ad97b570f7c(ref, listNode);
+    return(/*#__PURE__*/ $842b11e09be1b78a7386fd3c27d77a08$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($842b11e09be1b78a7386fd3c27d77a08$import$4659efbd9c13b15a$9099ad97b570f7c.Provider, {
+        value: handleSelect
+    }, /*#__PURE__*/ $842b11e09be1b78a7386fd3c27d77a08$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($842b11e09be1b78a7386fd3c27d77a08$import$a509dce686951f70$9099ad97b570f7c.Provider, {
+        value: {
+            role: role,
+            // used by NavLink to determine it's role
+            activeKey: $842b11e09be1b78a7386fd3c27d77a08$import$4659efbd9c13b15a$470ea4bf028baaa2(activeKey),
+            getControlledId: getControlledId || $842b11e09be1b78a7386fd3c27d77a08$var$noop,
+            getControllerId: getControllerId || $842b11e09be1b78a7386fd3c27d77a08$var$noop
+        }
+    }, /*#__PURE__*/ $842b11e09be1b78a7386fd3c27d77a08$import$f02ba03fc070e88c$9099ad97b570f7c.createElement(Component, $842b11e09be1b78a7386fd3c27d77a08$import$b5eba6ed2ba96e9b$9099ad97b570f7c({
+    }, props, {
+        onKeyDown: handleKeyDown,
+        ref: mergedRef,
+        role: role
+    })))));
+});
+var $842b11e09be1b78a7386fd3c27d77a08$export$9099ad97b570f7c = $842b11e09be1b78a7386fd3c27d77a08$var$AbstractNav;

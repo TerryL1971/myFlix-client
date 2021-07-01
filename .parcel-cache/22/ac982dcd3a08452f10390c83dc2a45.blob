@@ -1,0 +1,55 @@
+import   "fff4f0d391aadb0cc0afe7e615167cad:@babel/runtime/helpers/esm/extends";
+import   "fff4f0d391aadb0cc0afe7e615167cad:@babel/runtime/helpers/esm/objectWithoutPropertiesLoose";
+import   "fff4f0d391aadb0cc0afe7e615167cad:react";
+import   "fff4f0d391aadb0cc0afe7e615167cad:./utils";
+function $fff4f0d391aadb0cc0afe7e615167cad$var$_toPropertyKey(arg) {
+    var key = $fff4f0d391aadb0cc0afe7e615167cad$var$_toPrimitive(arg, "string");
+    return typeof key === "symbol" ? key : String(key);
+}
+function $fff4f0d391aadb0cc0afe7e615167cad$var$_toPrimitive(input, hint) {
+    if (typeof input !== "object" || input === null) return input;
+    var prim = input[Symbol.toPrimitive];
+    if (prim !== undefined) {
+        var res = prim.call(input, hint || "default");
+        if (typeof res !== "object") return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return (hint === "string" ? String : Number)(input);
+}
+function $fff4f0d391aadb0cc0afe7e615167cad$export$2e913ec24b79955b(propValue, defaultValue, handler) {
+    var wasPropRef = $fff4f0d391aadb0cc0afe7e615167cad$import$f02ba03fc070e88c$575893c07881cfe8(propValue !== undefined);
+    var _useState = $fff4f0d391aadb0cc0afe7e615167cad$import$f02ba03fc070e88c$f54936751fc2c51(defaultValue), stateValue = _useState[0], setState = _useState[1];
+    var isProp = propValue !== undefined;
+    var wasProp = wasPropRef.current;
+    wasPropRef.current = isProp;
+    /**
+   * If a prop switches from controlled to Uncontrolled
+   * reset its value to the defaultValue
+   */ if (!isProp && wasProp && stateValue !== defaultValue) setState(defaultValue);
+    return [
+        isProp ? propValue : stateValue,
+        $fff4f0d391aadb0cc0afe7e615167cad$import$f02ba03fc070e88c$e04575e0186a275b(function(value) {
+            for(var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)args[_key - 1] = arguments[_key];
+            if (handler) handler.apply(void 0, [
+                value
+            ].concat(args));
+            setState(value);
+        }, [
+            handler
+        ])
+    ];
+}
+function $fff4f0d391aadb0cc0afe7e615167cad$export$9099ad97b570f7c(props, config) {
+    return Object.keys(config).reduce(function(result, fieldName) {
+        var _extends2;
+        var _ref = result, defaultValue = _ref[$fff4f0d391aadb0cc0afe7e615167cad$import$4b1ea399deea6e65$c1bbfbf35033018d(fieldName)], propsValue = _ref[fieldName], rest = $fff4f0d391aadb0cc0afe7e615167cad$import$555fcbd5081a286a$9099ad97b570f7c(_ref, [
+            $fff4f0d391aadb0cc0afe7e615167cad$import$4b1ea399deea6e65$c1bbfbf35033018d(fieldName),
+            fieldName
+        ].map($fff4f0d391aadb0cc0afe7e615167cad$var$_toPropertyKey));
+        var handlerName = config[fieldName];
+        var _useUncontrolledProp = $fff4f0d391aadb0cc0afe7e615167cad$export$2e913ec24b79955b(propsValue, defaultValue, props[handlerName]), value = _useUncontrolledProp[0], handler = _useUncontrolledProp[1];
+        return $fff4f0d391aadb0cc0afe7e615167cad$import$b5eba6ed2ba96e9b$9099ad97b570f7c({
+        }, rest, (_extends2 = {
+        }, _extends2[fieldName] = value, _extends2[handlerName] = handler, _extends2));
+    }, props);
+}

@@ -1,0 +1,33 @@
+import   "dc4f92ee601bd9a9a7d2b6f348c69b4c:./css";
+import   "dc4f92ee601bd9a9a7d2b6f348c69b4c:./listen";
+import   "dc4f92ee601bd9a9a7d2b6f348c69b4c:./triggerEvent";
+function $dc4f92ee601bd9a9a7d2b6f348c69b4c$var$parseDuration(node) {
+    var str = $dc4f92ee601bd9a9a7d2b6f348c69b4c$import$f6ee26ecc23d1395$9099ad97b570f7c(node, 'transitionDuration') || '';
+    var mult = str.indexOf('ms') === -1 ? 1000 : 1;
+    return parseFloat(str) * mult;
+}
+function $dc4f92ee601bd9a9a7d2b6f348c69b4c$var$emulateTransitionEnd(element, duration, padding) {
+    if (padding === void 0) padding = 5;
+    var called = false;
+    var handle = setTimeout(function() {
+        if (!called) $dc4f92ee601bd9a9a7d2b6f348c69b4c$import$96befac128a78f21$9099ad97b570f7c(element, 'transitionend', true);
+    }, duration + padding);
+    var remove = $dc4f92ee601bd9a9a7d2b6f348c69b4c$import$fd43e387dffec5d6$9099ad97b570f7c(element, 'transitionend', function() {
+        called = true;
+    }, {
+        once: true
+    });
+    return function() {
+        clearTimeout(handle);
+        remove();
+    };
+}
+function $dc4f92ee601bd9a9a7d2b6f348c69b4c$export$9099ad97b570f7c(element, handler, duration, padding) {
+    if (duration == null) duration = $dc4f92ee601bd9a9a7d2b6f348c69b4c$var$parseDuration(element) || 0;
+    var removeEmulate = $dc4f92ee601bd9a9a7d2b6f348c69b4c$var$emulateTransitionEnd(element, duration, padding);
+    var remove = $dc4f92ee601bd9a9a7d2b6f348c69b4c$import$fd43e387dffec5d6$9099ad97b570f7c(element, 'transitionend', handler);
+    return function() {
+        removeEmulate();
+        remove();
+    };
+}

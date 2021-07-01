@@ -1,0 +1,22 @@
+import   "5082f8f3b754b32289b24d48b62dc338:@babel/runtime/helpers/esm/extends";
+import   "5082f8f3b754b32289b24d48b62dc338:@babel/runtime/helpers/esm/objectWithoutPropertiesLoose";
+import   "5082f8f3b754b32289b24d48b62dc338:classnames";
+import   "5082f8f3b754b32289b24d48b62dc338:react";
+import   "5082f8f3b754b32289b24d48b62dc338:./ThemeProvider";
+var $5082f8f3b754b32289b24d48b62dc338$var$_excluded = [
+    "bsPrefix",
+    "className",
+    "children",
+    "as"
+];
+var $5082f8f3b754b32289b24d48b62dc338$var$NavItem = /*#__PURE__*/ $5082f8f3b754b32289b24d48b62dc338$import$f02ba03fc070e88c$9099ad97b570f7c.forwardRef(function(_ref, ref) {
+    var bsPrefix = _ref.bsPrefix, className = _ref.className, children = _ref.children, _ref$as = _ref.as, Component = _ref$as === void 0 ? 'div' : _ref$as, props = $5082f8f3b754b32289b24d48b62dc338$import$555fcbd5081a286a$9099ad97b570f7c(_ref, $5082f8f3b754b32289b24d48b62dc338$var$_excluded);
+    bsPrefix = $5082f8f3b754b32289b24d48b62dc338$import$1581226de02c9527$6efad33e744e1774(bsPrefix, 'nav-item');
+    return(/*#__PURE__*/ $5082f8f3b754b32289b24d48b62dc338$import$f02ba03fc070e88c$9099ad97b570f7c.createElement(Component, $5082f8f3b754b32289b24d48b62dc338$import$b5eba6ed2ba96e9b$9099ad97b570f7c({
+    }, props, {
+        ref: ref,
+        className: $5082f8f3b754b32289b24d48b62dc338$import$c7a3314ec092e1bf$9099ad97b570f7c(className, bsPrefix)
+    }), children));
+});
+$5082f8f3b754b32289b24d48b62dc338$var$NavItem.displayName = 'NavItem';
+var $5082f8f3b754b32289b24d48b62dc338$export$9099ad97b570f7c = $5082f8f3b754b32289b24d48b62dc338$var$NavItem;

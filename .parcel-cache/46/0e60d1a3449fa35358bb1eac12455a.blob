@@ -1,0 +1,4 @@
+var $4b0515a06184c13ec6f9bfc999096629$var$toArray = Function.prototype.bind.call(Function.prototype.call, [].slice);
+function $4b0515a06184c13ec6f9bfc999096629$export$9099ad97b570f7c(element, selector) {
+    return $4b0515a06184c13ec6f9bfc999096629$var$toArray(element.querySelectorAll(selector));
+}

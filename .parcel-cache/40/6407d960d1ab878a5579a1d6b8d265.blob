@@ -1,0 +1,4 @@
+import   "315ab32c105a44d15a45e21a2c061e5b:react";
+var $315ab32c105a44d15a45e21a2c061e5b$var$NavContext = /*#__PURE__*/ $315ab32c105a44d15a45e21a2c061e5b$import$f02ba03fc070e88c$9099ad97b570f7c.createContext(null);
+$315ab32c105a44d15a45e21a2c061e5b$var$NavContext.displayName = 'NavContext';
+var $315ab32c105a44d15a45e21a2c061e5b$export$9099ad97b570f7c = $315ab32c105a44d15a45e21a2c061e5b$var$NavContext;

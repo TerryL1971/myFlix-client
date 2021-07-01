@@ -1,0 +1,86 @@
+import   "616394291a29dca055f7090abbf8454c:@babel/runtime/helpers/esm/extends";
+import   "616394291a29dca055f7090abbf8454c:@babel/runtime/helpers/esm/objectWithoutPropertiesLoose";
+import   "616394291a29dca055f7090abbf8454c:classnames";
+import   "616394291a29dca055f7090abbf8454c:react";
+import   "616394291a29dca055f7090abbf8454c:uncontrollable";
+import   "616394291a29dca055f7090abbf8454c:./createWithBsPrefix";
+import   "616394291a29dca055f7090abbf8454c:./NavbarBrand";
+import   "616394291a29dca055f7090abbf8454c:./NavbarCollapse";
+import   "616394291a29dca055f7090abbf8454c:./NavbarToggle";
+import   "616394291a29dca055f7090abbf8454c:./ThemeProvider";
+import   "616394291a29dca055f7090abbf8454c:./NavbarContext";
+import   "616394291a29dca055f7090abbf8454c:./SelectableContext";
+var $616394291a29dca055f7090abbf8454c$var$_excluded = [
+    "bsPrefix",
+    "expand",
+    "variant",
+    "bg",
+    "fixed",
+    "sticky",
+    "className",
+    "children",
+    "as",
+    "expanded",
+    "onToggle",
+    "onSelect",
+    "collapseOnSelect"
+];
+var $616394291a29dca055f7090abbf8454c$var$NavbarText = $616394291a29dca055f7090abbf8454c$import$8526d0cf5189adb2$9099ad97b570f7c('navbar-text', {
+    Component: 'span'
+});
+var $616394291a29dca055f7090abbf8454c$var$defaultProps = {
+    expand: true,
+    variant: 'light',
+    collapseOnSelect: false
+};
+var $616394291a29dca055f7090abbf8454c$var$Navbar = /*#__PURE__*/ $616394291a29dca055f7090abbf8454c$import$f02ba03fc070e88c$9099ad97b570f7c.forwardRef(function(props, ref) {
+    var _useUncontrolled = $616394291a29dca055f7090abbf8454c$import$54dc6d68fdbeb00d$8b522e502bfc74ab(props, {
+        expanded: 'onToggle'
+    }), initialBsPrefix = _useUncontrolled.bsPrefix, expand = _useUncontrolled.expand, variant = _useUncontrolled.variant, bg = _useUncontrolled.bg, fixed = _useUncontrolled.fixed, sticky = _useUncontrolled.sticky, className = _useUncontrolled.className, children = _useUncontrolled.children, _useUncontrolled$as = _useUncontrolled.as, Component = _useUncontrolled$as === void 0 ? 'nav' : _useUncontrolled$as, expanded = _useUncontrolled.expanded, _onToggle = _useUncontrolled.onToggle, onSelect = _useUncontrolled.onSelect, collapseOnSelect = _useUncontrolled.collapseOnSelect, controlledProps = $616394291a29dca055f7090abbf8454c$import$555fcbd5081a286a$9099ad97b570f7c(_useUncontrolled, $616394291a29dca055f7090abbf8454c$var$_excluded);
+    var bsPrefix = $616394291a29dca055f7090abbf8454c$import$1581226de02c9527$6efad33e744e1774(initialBsPrefix, 'navbar');
+    var handleCollapse = $616394291a29dca055f7090abbf8454c$import$f02ba03fc070e88c$e04575e0186a275b(function() {
+        if (onSelect) onSelect.apply(void 0, arguments);
+        if (collapseOnSelect && expanded) {
+            if (_onToggle) _onToggle(false);
+        }
+    }, [
+        onSelect,
+        collapseOnSelect,
+        expanded,
+        _onToggle
+    ]); // will result in some false positives but that seems better
+    // than false negatives. strict `undefined` check allows explicit
+    // "nulling" of the role if the user really doesn't want one
+    if (controlledProps.role === undefined && Component !== 'nav') controlledProps.role = 'navigation';
+    var expandClass = bsPrefix + "-expand";
+    if (typeof expand === 'string') expandClass = expandClass + "-" + expand;
+    var navbarContext = $616394291a29dca055f7090abbf8454c$import$f02ba03fc070e88c$fe55aea32a6cbc49(function() {
+        return {
+            onToggle: function onToggle() {
+                return _onToggle && _onToggle(!expanded);
+            },
+            bsPrefix: bsPrefix,
+            expanded: !!expanded
+        };
+    }, [
+        bsPrefix,
+        expanded,
+        _onToggle
+    ]);
+    return(/*#__PURE__*/ $616394291a29dca055f7090abbf8454c$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($616394291a29dca055f7090abbf8454c$import$523ef7575a161360$9099ad97b570f7c.Provider, {
+        value: navbarContext
+    }, /*#__PURE__*/ $616394291a29dca055f7090abbf8454c$import$f02ba03fc070e88c$9099ad97b570f7c.createElement($616394291a29dca055f7090abbf8454c$import$4659efbd9c13b15a$9099ad97b570f7c.Provider, {
+        value: handleCollapse
+    }, /*#__PURE__*/ $616394291a29dca055f7090abbf8454c$import$f02ba03fc070e88c$9099ad97b570f7c.createElement(Component, $616394291a29dca055f7090abbf8454c$import$b5eba6ed2ba96e9b$9099ad97b570f7c({
+        ref: ref
+    }, controlledProps, {
+        className: $616394291a29dca055f7090abbf8454c$import$c7a3314ec092e1bf$9099ad97b570f7c(className, bsPrefix, expand && expandClass, variant && bsPrefix + "-" + variant, bg && "bg-" + bg, sticky && "sticky-" + sticky, fixed && "fixed-" + fixed)
+    }), children))));
+});
+$616394291a29dca055f7090abbf8454c$var$Navbar.defaultProps = $616394291a29dca055f7090abbf8454c$var$defaultProps;
+$616394291a29dca055f7090abbf8454c$var$Navbar.displayName = 'Navbar';
+$616394291a29dca055f7090abbf8454c$var$Navbar.Brand = $616394291a29dca055f7090abbf8454c$import$4e359ab974b1cd98$9099ad97b570f7c;
+$616394291a29dca055f7090abbf8454c$var$Navbar.Toggle = $616394291a29dca055f7090abbf8454c$import$8f2b37a43c0d508$9099ad97b570f7c;
+$616394291a29dca055f7090abbf8454c$var$Navbar.Collapse = $616394291a29dca055f7090abbf8454c$import$68b7b8e28b3cce2$9099ad97b570f7c;
+$616394291a29dca055f7090abbf8454c$var$Navbar.Text = $616394291a29dca055f7090abbf8454c$var$NavbarText;
+var $616394291a29dca055f7090abbf8454c$export$9099ad97b570f7c = $616394291a29dca055f7090abbf8454c$var$Navbar;
