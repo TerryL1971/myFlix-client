@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
-import Config from '../../config.js';
+//import Config from '../../config.js';
 import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
