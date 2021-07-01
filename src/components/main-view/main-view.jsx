@@ -18,7 +18,7 @@ import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
 import { ProfileView } from '../profile-view/profile-view';
-import Config from '../../config.js';
+//import Config from '../../config.js';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';

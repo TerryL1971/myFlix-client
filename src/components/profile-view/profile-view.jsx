@@ -5,7 +5,7 @@ import { Card, FormControl } from 'react-bootstrap';
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import { Button, Form, Col, Row } from "react-bootstrap";
-import Config from '../../config.js';
+//import Config from '../../config.js';
 
 
 // Router
