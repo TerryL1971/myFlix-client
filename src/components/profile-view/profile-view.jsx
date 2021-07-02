@@ -216,11 +216,11 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
     movies: PropTypes.array.isRequired,
 
     userProfile: PropTypes.shape({
-        username: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        favorite_movies: PropTypes.array.isRequired,
-        birth_date: PropTypes.string.isRequired,
-        pwd: PropTypes.string,
+        Username: PropTypes.string.isRequired,
+        Email: PropTypes.string.isRequired,
+        FavoriteMovies: PropTypes.array.isRequired,
+        Birthday: PropTypes.string.isRequired,
+        Password: PropTypes.string,
         _id: PropTypes.string
     }).isRequired,
 
