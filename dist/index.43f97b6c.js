@@ -24928,6 +24928,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view"
                 }));
                 var m;
+                // #6
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_moviesListDefault.default, {
                     movies: movies
                 }));
@@ -24947,7 +24948,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 159
+                lineNumber: 160
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -24973,7 +24974,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 166
+                lineNumber: 167
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25002,7 +25003,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 177
+                lineNumber: 178
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25029,7 +25030,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 187
+                lineNumber: 188
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25059,7 +25060,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 197
+                lineNumber: 198
             },
             __self: this
         }))));
@@ -28862,7 +28863,7 @@ $RefreshReg$(_c, "MoviesList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Col":"2D0r8","react-redux":"7GDa4","../visibility-filter-input/visibility-filter-input":"2QW87","../movie-card/movie-card":"2kcJf","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","../navigation-bar/navigation-bar":"6e8Fs"}],"2D0r8":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Col":"2D0r8","react-redux":"7GDa4","../visibility-filter-input/visibility-filter-input":"2QW87","../movie-card/movie-card":"2kcJf","../navigation-bar/navigation-bar":"6e8Fs","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"2D0r8":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;

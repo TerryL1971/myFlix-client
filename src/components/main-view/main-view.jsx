@@ -146,6 +146,7 @@ class MainView extends React.Component {
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (movies.length === 0) return <div className="main-view" />;
+            // #6
             return <MoviesList movies={movies}/>;
             return movies.map(m => (
               <Col md={3} key={m._id}>
