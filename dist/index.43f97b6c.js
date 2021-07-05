@@ -30588,7 +30588,7 @@ function NavigationBar({ logOut , user  }) {
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
-        href: "#",
+        href: "/",
         __source: {
             fileName: "/Users/terry_c_lombardi/Desktop/myFlix-client/myFlix-client/src/components/navigation-bar/navigation-bar.jsx",
             lineNumber: 19

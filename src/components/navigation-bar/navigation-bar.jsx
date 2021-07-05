@@ -16,7 +16,7 @@ export function NavigationBar( {logOut, user} ) {
 
     return(
     <Navbar bg="light" variant="light" fixed="top">
-        <Navbar.Brand href="#">My Flix</Navbar.Brand>
+        <Navbar.Brand href="/">My Flix</Navbar.Brand>
         <Nav className="me-auto">
             <Nav.Item className="nav-link">
                 <Link to={`/`}>Home</Link>
@@ -29,4 +29,3 @@ export function NavigationBar( {logOut, user} ) {
     </Navbar>
     )
 }
-
