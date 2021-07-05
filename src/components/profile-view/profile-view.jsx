@@ -5,7 +5,6 @@ import { Card, FormControl } from 'react-bootstrap';
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import { Button, Form, Col, Row } from "react-bootstrap";
-//import Config from '../../config.js';
 
 
 // Router
@@ -131,10 +130,9 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
 
     // Delete a film from favorites
     const deleteMovie = (movieID) => {
-        axios.delete(`https://myflix-app-1029.herokuapp.com/users/${Username}/favorites/${movieID}`,
+        axios.delete(`https://myflix-app-1029.herokuapp.com/users/${Username}/favorites/${_id}`,
         {
-            headers: { Authorization: `Bearer ${userToken}` }
-
+          headers: { Authorization: `Bearer ${userToken}` }
         }).then(response => {
             const data = response.data;
             onMovieDelete(data)
@@ -167,14 +165,14 @@ export function ProfileView({ userProfile, userToken, onDelete, onUpdate, movies
                     <div className="user-label">Birth:</div>
                     <div className="user">{Birthday.slice(0, 10)}</div>
                 </div>
+                console.log("Fav"; FavoriteMovies)
                 <div className="user-info">
                     <div className="user-label">Favorite Movies:</div>
                     <ul className="user">
-                    {filteredMovies.map((m, index)=> <li key={index} className="fav-list">  <Link to={`/movies/${m._id}`}>{m.title}</Link> <button className="close" onClick={() => deleteMovie(m._id)} >&times;</button> </li>)}
+                    {filteredMovies.map((m, index)=> <li key={index} className="fav-list">  <Link to={`users/${Username}/favorites/${_id}`}>{m.Title}</Link> <button className="close" onClick={() => deleteMovie(m._id)} >&times;</button> </li>)}
                     </ul>
                 </div>
             </div>
-
             <Form className="update-info">
                 <h4>Manage account</h4> <hr />
                 <Form.Group controlId="formBasicUsername">

@@ -15,6 +15,9 @@ import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { NavigationBar } from '../navigation-bar/navigation-bar';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import { ProfileView } from '../profile-view/profile-view';
 
 
@@ -97,6 +100,7 @@ class MainView extends React.Component {
       token: null,
       user_profile: null
     });
+    window.open('/', '_self');
   }
 
   // Update Users info
@@ -133,7 +137,7 @@ class MainView extends React.Component {
 
 
   render() { 
-    const { user_profile, token } = this.state; 
+    const { user_profile, token, register } = this.state; 
     let { movies } = this.props;
     let { user } = this.state;
     console.log("hello", user);
@@ -148,6 +152,18 @@ class MainView extends React.Component {
             if (movies.length === 0) return <div className="main-view" />;
             // #6
             return <MoviesList movies={movies}/>;
+
+            <Navbar>
+              <Navbar.Brand href="/">My Flix</Navbar.Brand>
+              <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
+                  <Nav className="justify-content-end">
+                    <Nav.Link href={`/users/${Username}`}>My Profile</Nav.Link>
+                  </Nav>
+                  <Button onClick={() => this.logOut()} variant="secondary">Log Out</Button>
+                </Navbar.Collapse>
+            </Navbar>
+
             return movies.map(m => (
               <Col md={3} key={m._id}>
                 <NavigationBar logOut={() => this.onLoggedOut()} user={user}  />

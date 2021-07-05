@@ -3,6 +3,10 @@
   margin-top: 20px;
 }
 
+.float-end {
+  position: absolute;
+  right: 50px;
+}
 .myFlix {
   color: steelblue;
 }
