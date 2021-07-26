@@ -1,0 +1,13 @@
+.float-end {
+  position: absolute;
+  right: 50px;
+}
+
+.genre-name {
+  margin-top: 20px;
+}
+
+.myFlix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.HASH_REF_b1eea02b02e5a47a93ec9ef0fe30f620.css.map */
