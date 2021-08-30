@@ -1,6 +1,3 @@
-/** 
-* This Actions file is setup an export hub to the myFlix Client for the API.
-*/
 export const SET_MOVIES = 'SET_MOVIES';
 //export const SET_DIRECTORS = 'SET_DIRECTORS';
 //export const SET_GENRES = 'SET_GENRES';
