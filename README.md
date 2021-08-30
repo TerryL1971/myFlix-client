@@ -1,5 +1,7 @@
 # myFlix-client
 
+![myFlix-client](./src/img/myFlix.gif)
+
 Objective
 To build the server-side component of a “movies” web application. The web
 application will provide users with access to information about different
